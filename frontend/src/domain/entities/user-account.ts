@@ -1,4 +1,4 @@
-import { Person, Profile } from "@/types";
+import { PaymentMethod, Person, Profile } from "@/types";
 
 export interface UserAccountDto {
   id: string;
@@ -20,6 +20,11 @@ export class UserAccount {
   getPerson(profileId:string, personId: string): Person | undefined {
     const profile = this.getProfile(profileId);
     return profile?.persons.find((person) => person.id === personId);
+  }
+
+  getPaymentMethod(profileId: string, paymentMethodId: string): PaymentMethod | undefined {
+    const profile = this.getProfile(profileId);
+    return profile?.paymentMethods.find((paymentMethod) => paymentMethod.id === paymentMethodId);
   }
 
   removeProfile(profileId: string): void {

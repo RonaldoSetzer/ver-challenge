@@ -11,7 +11,7 @@ function Routes() {
       <Route path="/" element={<UserAccountPage />} />
       <Route path="/profile/:profileId" element={<ProfileDetailsPage />} />
       <Route path="/profile/:profileId/person/:personId" element={<PersonDetailsPage />} />
-      <Route path="/payment-method/:profileId" element={<PaymentMethodDetailsPage />} />
+      <Route path="/profile/:profileId/payment-method/:paymentId" element={<PaymentMethodDetailsPage />} />
       <Route path="/address/:profileId" element={<AddressDetailsPage />} />
     </RoutesDom>
   )

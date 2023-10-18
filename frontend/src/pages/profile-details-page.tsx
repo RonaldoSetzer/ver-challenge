@@ -65,7 +65,7 @@ function ProfileDetailsPage() {
             {profile.paymentMethods.map((payment) => (
               <tr key={payment.id}>
                 <td>
-                  <Link to={`/payment-method/${profileId}`}>
+                  <Link to={`/profile/${profileId}/payment-method/${payment.id}`}>
                     {payment.name}
                   </Link>
                 </td>
