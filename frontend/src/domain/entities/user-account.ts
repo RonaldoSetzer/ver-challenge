@@ -13,6 +13,10 @@ export class UserAccount {
     public profiles: Profile[],
   ) { }
 
+  getProfile(profileId: string): Profile | undefined {
+    return this.profiles.find((profile) => profile.id === profileId);
+  }
+
   removeProfile(profileId: string): void {
     this.profiles = this.profiles.filter((profile) => profile.id !== profileId);
   }
