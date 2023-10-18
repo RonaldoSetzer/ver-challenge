@@ -12,7 +12,7 @@ function Routes() {
       <Route path="/profile/:profileId" element={<ProfileDetailsPage />} />
       <Route path="/profile/:profileId/person/:personId" element={<PersonDetailsPage />} />
       <Route path="/profile/:profileId/payment-method/:paymentId" element={<PaymentMethodDetailsPage />} />
-      <Route path="/address/:profileId" element={<AddressDetailsPage />} />
+      <Route path="profile/:profileId/address/:addressId" element={<AddressDetailsPage />} />
     </RoutesDom>
   )
 }

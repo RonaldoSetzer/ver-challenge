@@ -84,7 +84,7 @@ function ProfileDetailsPage() {
               {profile.addresses.map((address) => (
                 <tr key={address.id}>
                   <td>
-                    <Link to={`/address/${profileId}`}>
+                    <Link to={`/profile/${profileId}/address/${address.id}`}>
                       {address.name} {address.street} {address.houseNumber}
                     </Link>
                   </td>
