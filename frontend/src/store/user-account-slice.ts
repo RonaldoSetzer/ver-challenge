@@ -22,12 +22,20 @@ const userAccountSlice = createSlice({
       );
 
       state.userAccount = userAccount;
+    },
+    deleteProfileById(state, action: PayloadAction<string>) {
+      if (state.userAccount) {
+        const userAccount = state.userAccount;
+        userAccount.removeProfile(action.payload);
+        state.userAccount = userAccount;
+      }
     }
   }
 });
 
 export const {
-  setUserAccount
+  setUserAccount,
+  deleteProfileById 
 } = userAccountSlice.actions;
 export default userAccountSlice;
 export const selectUserAccount = (state: RootState) => state.userAccount.userAccount;

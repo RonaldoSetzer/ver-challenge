@@ -1,11 +1,20 @@
-import { useGetUserAccountQuery } from "@/store/api";
+import { useEffect } from "react";
+import { useDeleteProfileMutation, useGetUserAccountQuery } from "@/store/api";
 import { selectUserAccount } from "@/store/user-account-slice";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+
 function UserAccountPage() {
   const { isLoading } = useGetUserAccountQuery()
   const userAccount = useSelector(selectUserAccount)
+  const [deleteProfile, response] = useDeleteProfileMutation()
+
+  useEffect(() => {
+    if (response.isSuccess) {
+      console.log("Profile deleted")
+    }
+  }, [response])
 
 
   return (
@@ -56,7 +65,7 @@ function UserAccountPage() {
                   </Link>
                 </td>
                 <td>
-                  <button>remove</button>
+                  <button onClick={() => deleteProfile(profile.id)}>remove</button>
                 </td>
               </tr>
             ))}

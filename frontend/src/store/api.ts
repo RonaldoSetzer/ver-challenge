@@ -7,9 +7,18 @@ const api = createApi({
     getUserAccount: builder.query<UserAccountDto, void>({
       query: () => "/",
     }),
-  }),
-});
+    deleteProfile: builder.mutation<void, string>({
+      query: (profileId) => ({
+        url: `/profiles/${profileId}`,
+        method: "DELETE",
+      }),
+    }),
+  })
+})
 
-export const { useGetUserAccountQuery } = api;
+export const {
+  useGetUserAccountQuery,
+  useDeleteProfileMutation,
+} = api;
 export default api;
 

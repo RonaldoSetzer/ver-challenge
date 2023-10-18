@@ -10,8 +10,12 @@ export class UserAccount {
   constructor(
     public readonly id: string,
     public readonly email: string,
-    public readonly profiles: Profile[],
+    public profiles: Profile[],
   ) { }
+
+  removeProfile(profileId: string): void {
+    this.profiles = this.profiles.filter((profile) => profile.id !== profileId);
+  }
 
   numProfiles(): number {
     return this.profiles.length;
