@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDeleteProfileMutation, useGetUserAccountQuery } from "@/store/api";
 import { selectUserAccount } from "@/store/user-account-slice";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 function UserAccountPage() {
   const { isLoading } = useGetUserAccountQuery()
+  const [ timer, setTimer ] = useState(0)
   const userAccount = useSelector(selectUserAccount)
   const [deleteProfile, response] = useDeleteProfileMutation()
 
@@ -16,10 +17,19 @@ function UserAccountPage() {
     }
   }, [response])
 
+  useEffect(() => {
+    if (isLoading) {
+      const interval = setInterval(() => {
+        setTimer((timer) => timer + 1)
+      }, 100)
+      return () => clearInterval(interval)
+    }
+  }, [isLoading])
 
   return (
     <>
       {isLoading && <p>Loading...</p>}
+      <p>Loaded in {timer} milliseconds</p>
       {userAccount && (
         <table>
           <tbody>
