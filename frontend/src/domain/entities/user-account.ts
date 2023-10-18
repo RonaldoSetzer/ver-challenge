@@ -1,4 +1,4 @@
-import { Profile } from "@/types";
+import { Person, Profile } from "@/types";
 
 export interface UserAccountDto {
   id: string;
@@ -15,6 +15,11 @@ export class UserAccount {
 
   getProfile(profileId: string): Profile | undefined {
     return this.profiles.find((profile) => profile.id === profileId);
+  }
+
+  getPerson(profileId:string, personId: string): Person | undefined {
+    const profile = this.getProfile(profileId);
+    return profile?.persons.find((person) => person.id === personId);
   }
 
   removeProfile(profileId: string): void {

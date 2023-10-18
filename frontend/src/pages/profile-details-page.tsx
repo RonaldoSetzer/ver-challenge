@@ -47,7 +47,7 @@ function ProfileDetailsPage() {
             {profile.persons.map((person) => (
               <tr key={person.id}>
                 <td>
-                  <Link to={`/person/${profileId}`}>
+                  <Link to={`/profile/${profileId}/person/${person.id}`}>
                     {person.salutation} {person.lastName}
                   </Link>
                 </td>
