@@ -1,0 +1,28 @@
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import api from "./api";
+import userAccountSlice, { setUserAccount } from "./user-account-slice";
+
+const customMiddleware = (store: any) => (next: any) => (action: any) => {
+  if (action.type === "api/executeQuery/fulfilled" && action.meta.arg.endpointName === "getUserAccount") {
+    store.dispatch(setUserAccount(action.payload));
+  }
+  return next(action);
+};
+
+export const store = configureStore({
+  reducer: {
+    [api.reducerPath]: api.reducer,
+    userAccount: userAccountSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false })
+    .concat(api.middleware)
+    .concat(customMiddleware),
+});
+
+setupListeners(store.dispatch);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+
