@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Profile } from "@/types";
-import { Button, ListItem } from "../ui";
+import { Button, ListItem, Tag } from "../ui";
 
 interface ProfileListItemProps {
   profile: Profile;
@@ -10,7 +10,7 @@ interface ProfileListItemProps {
 
 function ProfileListItem({ profile, onDeleteProfile }: ProfileListItemProps) {
   const [isDeleting, setIsDeleting] = useState(false)
-  const { id, name } = profile
+  const { id, name, isPrimary } = profile
 
   function handleDeleteProfile() {
     setIsDeleting(true)
@@ -22,7 +22,7 @@ function ProfileListItem({ profile, onDeleteProfile }: ProfileListItemProps) {
       {isDeleting
         ? <p>Deleting ...</p>
         : <>
-          <Link to={`/profile/${id}`}> {name} </Link>
+          <Link to={`/profile/${id}`}> {name} {isPrimary && <Tag>Primary</Tag>} </Link>
           <Button onClick={handleDeleteProfile}>remove</Button>
         </>
       }

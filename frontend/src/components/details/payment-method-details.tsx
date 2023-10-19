@@ -1,5 +1,5 @@
 import { PaymentMethod } from "@/types";
-import { Container, List, ListItem, Title } from "../ui";
+import { Container, List, ListItem, Tag, Title } from "../ui";
 
 interface PaymentMethodDetailsProps {
   paymentMethod: PaymentMethod;
@@ -8,7 +8,7 @@ interface PaymentMethodDetailsProps {
 function PaymentMethodDetails({ paymentMethod }: PaymentMethodDetailsProps) {
   return (
     <Container>
-      <Title>Payment Method Details</Title>
+      <Title>Payment Method Details {paymentMethod.isPrimary && <Tag>Primary</Tag>}</Title>
       <List>
         <ListItem>
           <label>name</label>

@@ -10,7 +10,6 @@ const customMiddleware = (store: any) => (next: any) => (action: any) => {
   if (action.type === "api/executeMutation/fulfilled" && action.meta.arg.endpointName === "deleteProfile") {
     store.dispatch(deleteProfileById(action.payload.id));
   }
-  console.log(action);
   return next(action);
 };
 
@@ -28,5 +27,3 @@ setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-

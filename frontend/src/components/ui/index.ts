@@ -19,6 +19,16 @@ export const Container = styled.section`
   box-shadow: 0 0 0.5rem #ccc;
 `;
 
+export const Tag = styled.span`
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  font-size: 0.75rem;
+  font-weight: 600;
+`;
+
 export const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: 600;

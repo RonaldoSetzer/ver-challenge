@@ -1,5 +1,5 @@
 import { Person } from "@/types";
-import { Container, List, ListItem, Title } from "../ui";
+import { Container, List, ListItem, Tag, Title } from "../ui";
 
 interface PersonDetailsProps {
   person: Person;
@@ -8,11 +8,11 @@ interface PersonDetailsProps {
 function PersonDetails({ person }: PersonDetailsProps) {
   return (
     <Container>
-      <Title>Person Details</Title>
+      <Title>Person Details {person.isPrimary && <Tag>Primary</Tag>}</Title>
       <List>
         <ListItem>
           <label>Name</label>
-          <span>{person.salutation} {person.firstName} {person.lastName} {person.isPrimary}</span>
+          <span>{person.salutation} {person.firstName} {person.lastName} </span>
         </ListItem>
         <ListItem>
           <label>Occupation</label>

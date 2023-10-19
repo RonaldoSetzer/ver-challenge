@@ -1,5 +1,5 @@
 import { Address } from "@/types";
-import { Container, List, ListItem, Title } from "../ui";
+import { Container, List, ListItem, Tag, Title } from "../ui";
 
 interface AddressDetailsProps {
   address: Address;
@@ -10,6 +10,13 @@ function AddressDetails({ address }: AddressDetailsProps) {
     <Container>
       <Title>Address Details</Title>
       <List>
+        {address.isPrimaryBilling || address.isPrimaryShipping || address.isPrimaryMailing &&
+          <div>
+            {address.isPrimaryBilling && <Tag>Primary Billing</Tag>}
+            {address.isPrimaryShipping && <Tag>Primary Shipping</Tag>}
+            {address.isPrimaryMailing && <Tag>Primary Mailing</Tag>}
+          </div>
+        }
         <ListItem>
           <label>name</label>
           <span>{address.name} {address.isPrimaryBilling}</span>

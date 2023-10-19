@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Person } from "@/types";
-import { Container, List, ListItem, Title } from "../ui";
+import { Container, List, ListItem, Tag, Title } from "../ui";
 
 interface PersonListProps {
   profileId: string;
@@ -15,7 +15,7 @@ function PersonList({ profileId, persons }: PersonListProps) {
         {persons.map((person) => (
           <ListItem key={person.id}>
             <Link to={`/profile/${profileId}/person/${person.id}`}>
-              {person.salutation} {person.lastName}
+              {person.salutation} {person.lastName} {person.isPrimary && <Tag>Primary</Tag>}
             </Link>
           </ListItem>
         ))}
