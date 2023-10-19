@@ -11,15 +11,15 @@ function PaymentMethodDetails({ paymentMethod }: PaymentMethodDetailsProps) {
       <Title>Payment Method Details {paymentMethod.isPrimary && <Tag>Primary</Tag>}</Title>
       <List>
         <ListItem>
-          <label>name</label>
+          <label>Name</label>
           <span>{paymentMethod.name}</span>
         </ListItem>
         <ListItem>
-          <label>iban</label>
+          <label>Iban</label>
           <span>{paymentMethod.iban}</span>
         </ListItem>
         <ListItem>
-          <label>bic</label>
+          <label>BIC</label>
           <span>{paymentMethod.bic}</span>
         </ListItem>
       </List>

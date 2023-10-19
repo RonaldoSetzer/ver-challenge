@@ -18,19 +18,19 @@ function AddressDetails({ address }: AddressDetailsProps) {
           </div>
         }
         <ListItem>
-          <label>name</label>
+          <label>Name</label>
           <span>{address.name} {address.isPrimaryBilling}</span>
         </ListItem>
         <ListItem>
-          <label>postal code</label>
+          <label>Postal code</label>
           <span>{address.postalCode} {address.city}</span>
         </ListItem>
         <ListItem>
-          <label>street</label>
+          <label>Street</label>
           <span>{address.street} {address.houseNumber}</span>
         </ListItem>
         <ListItem>
-          <label>meters</label>
+          <label>Meters</label>
           <span>{address.meters.length}</span>
         </ListItem>
       </List>
