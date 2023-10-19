@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import { Profile } from "@/types";
-import { Button, Container, List, ListItem, Title } from "../ui";
+import { Container, List, Title } from "../ui";
+import ProfileListItem from "./profile-list-item";
 
 interface ProfileListProps {
   profiles: Profile[];
@@ -13,12 +13,7 @@ function ProfileList({ profiles, onDeleteProfile }: ProfileListProps) {
       <Title>Profiles</Title>
       <List>
         {profiles.map((profile) => (
-          <ListItem key={profile.id}>
-            <Link to={`/profile/${profile.id}`}>
-              {profile.name}
-            </Link>
-            <Button onClick={() => onDeleteProfile(profile.id)}>remove</Button>
-          </ListItem>
+          <ProfileListItem key={profile.id} profile={profile} onDeleteProfile={onDeleteProfile} />
         ))}
       </List>
     </Container>
