@@ -41,7 +41,7 @@ export class UserAccount {
   }
 
   numPaymentMethods(): number {
-    return this.profiles.length;
+    return this.profiles.reduce((acc, profile) => acc + profile.paymentMethods.length, 0);
   }
 
   numPersons(): number {
