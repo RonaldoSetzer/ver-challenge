@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { PaymentMethod } from "@/types";
-import { Container, List, ListItem, Title } from "../ui";
+import { Container, List, ListItem, Tag, Title } from "../ui";
 
 interface PaymentMethodListProps {
   profileId: string;
@@ -17,6 +17,7 @@ function PaymentMethodList({ profileId, paymentMethods }: PaymentMethodListProps
             <Link to={`/profile/${profileId}/payment-method/${payment.id}`}>
               {payment.name}
             </Link>
+            {payment.isPrimary && <Tag>Primary</Tag>}
           </ListItem>
         ))}
       </List>

@@ -1,4 +1,5 @@
-import { Container, List, ListItem, Tag, Title } from "../ui";
+import { Meter } from "@/types";
+import { Container, List, ListItem, Title } from "../ui";
 
 interface MeterListProps {
   meters: Meter[];
@@ -11,12 +12,11 @@ function MeterList({ meters }: MeterListProps) {
       <List>
         {meters.map((meter) => (
           <ListItem key={meter.id}>
-              {meter.name} {meter.isPrimary && <Tag>Primary</Tag>}
+            {meter.name}
           </ListItem>
         ))}
       </List>
     </Container>
-
-    )
+  )
 }
 export default MeterList;

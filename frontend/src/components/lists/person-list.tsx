@@ -15,8 +15,9 @@ function PersonList({ profileId, persons }: PersonListProps) {
         {persons.map((person) => (
           <ListItem key={person.id}>
             <Link to={`/profile/${profileId}/person/${person.id}`}>
-              {person.salutation} {person.lastName} {person.isPrimary && <Tag>Primary</Tag>}
+              {person.salutation} {person.lastName}
             </Link>
+            {person.isPrimary && <Tag>Primary</Tag>}
           </ListItem>
         ))}
       </List>
