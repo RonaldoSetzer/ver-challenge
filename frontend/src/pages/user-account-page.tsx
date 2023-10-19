@@ -1,16 +1,12 @@
-import { useSelector } from "react-redux";
-import { useDeleteProfileMutation, useGetUserAccountQuery } from "@/store/api";
-import { selectUserAccount } from "@/store/user-account-slice";
+import { useDeleteProfileMutation } from "@/store/api";
 import { Main } from "@/components/ui";
 import UserAccountDetails from "@/components/details/user-account-details";
 import ProfileList from "@/components/lists/profile-list";
-import useLoadingTimer from "@/hooks/use-loading-timer";
+import UseUserAccount from "@/hooks/use-user-account";
 
 function UserAccountPage() {
-  const userAccount = useSelector(selectUserAccount)
-  const { isLoading } = useGetUserAccountQuery()
-  const [ deleteProfile ] = useDeleteProfileMutation()
-  const { formattedTime } = useLoadingTimer(isLoading)
+  const { userAccount, formattedTime, isLoading } = UseUserAccount();
+  const [deleteProfile] = useDeleteProfileMutation()
   const { profiles } = userAccount || { profiles: [] }
 
   return (

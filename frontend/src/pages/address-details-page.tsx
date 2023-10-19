@@ -1,14 +1,13 @@
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectUserAccount } from "@/store/user-account-slice";
 import { Main } from "@/components/ui";
 import UserAccountDetails from "@/components/details/user-account-details";
 import AddressDetails from "@/components/details/address-details";
 import MeterList from "@/components/lists/meter-list";
+import UseUserAccount from "@/hooks/use-user-account";
 
 function AddressDetailsPage() {
   const { profileId, addressId } = useParams();
-  const userAccount = useSelector(selectUserAccount)
+  const { userAccount, formattedTime, isLoading } = UseUserAccount();
   const address = profileId && addressId && userAccount?.getAddress(profileId, addressId)
   const meters = address && address.meters
 
@@ -17,6 +16,7 @@ function AddressDetailsPage() {
       {userAccount && <UserAccountDetails userAccount={userAccount} />}
       {address && <AddressDetails address={address} />}
       {meters && <MeterList meters={meters} />}
+      <p>{isLoading ? `Loading ...` : `Loaded: `}{formattedTime}</p>
     </Main>
   );
 }
